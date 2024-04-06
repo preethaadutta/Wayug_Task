@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.ico">
+    <title>Crex.live</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        .nav {
+            height: 50px;
+            width: 100%;
+            background-color: #122638;
+            border-bottom: 2px solid #63676a;
+            position: relative;
+          }
+          
+          .nav > .nav-header {
+            display: inline;
+          }
+          
+          .nav > .nav-header > .nav-title {
+            display: inline-block;
+            font-size: 22px;
+            color: #737f89;
+            padding: 0 10px;
+          }
+          
+          .nav > .nav-btn {
+            display: none;
+          }
+          
+          .nav > .nav-links {
+            display: inline;
+            float: right;
+            font-size: 18px;
+          }
+          
+          .nav > .nav-links > a {
+            display: inline-block;
+            padding: 13px 10px 13px 10px;
+            text-decoration: none;
+            color: #737f89;
+
+            padding: 15px 15px;
+          }
+          
+          .nav > .nav-links > a:hover {
+            color: #cbcfd3;
+          }
+          
+          .nav > #nav-check {
+            display: none;
+          }
+          
+          @media (max-width:600px) {
+            .nav > .nav-btn {
+              display: inline-block;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+            }
+            .nav > .nav-btn > label {
+              display: inline-block;
+              width: 50px;
+              height: 50px;
+              padding: 13px;
+            }
+            .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+              background-color: rgba(0, 0, 0, 0.3);
+            }
+            .nav > .nav-btn > label > span {
+              display: block;
+              width: 25px;
+              height: 10px;
+              border-top: 2px solid #d49f50;
+            }
+            .nav > .nav-links {
+              position: absolute;
+              display: block;
+              width: 100%;
+              background-color: #12263849;
+              height: 0px;
+              transition: all 0.3s ease-in;
+              overflow-y: hidden;
+              top: 50px;
+              left: 0px;
+            }
+            .nav > .nav-links > a {
+              display: block;
+              width: 100%;
+            }
+            .nav > #nav-check:not(:checked) ~ .nav-links {
+              height: 0px;
+            }
+            .nav > #nav-check:checked ~ .nav-links {
+              height: calc(100vh - 50px);
+              overflow-y: auto;
+            }
+          }
+
+
+
+
+        #bannerp{
+            color:#93989d;
+            font-size: 20px;
+            display: inline-block;
+        }
+        #bannert{
+            color:#d49f50;
+            font-size: 30px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .menu{
+            margin:0 10px;
+            padding: 14px 0;
+            padding-bottom: 16px;
+        }
+        .menu1{
+            color:#707c86;
+        }
+        .menu:hover,.active{
+            cursor: pointer;
+            color:#cbcfd3;
+            padding-bottom: 14px;
+            border-bottom: 2px solid #ff7575;
+        }
+        .footer_menu>li{
+            list-style-type: none;
+            margin: 10px 0;
+        }
+        .footer_menu>li>a{
+            text-decoration: none;
+            color: #fff;
+        }
+        .players td{
+            padding: 5px 0;
+            text-align: center;
+        }
+        .players h6{
+            font-size: 15px;
+        }
+        .namelogo{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            margin: 0 100px;
+            border-bottom:2px solid #c5c7ca;
+        }
+        .namelogo>h6{
+            font-size: 20px;
+            padding-right:5px;
+        }
+        section{
+            display:grid;
+            grid-template-columns:1fr 3fr;
+            grid-gap:20px;
+            padding:50px 100px;
+        }
+        .leftdiv{
+            color:#656566;padding:20px;border-right:2px solid #c5c7ca;
+        }
+        @media (max-width:872px){
+            section{
+                grid-template-columns:1fr;
+            }
+            .leftdiv{
+                border-right: 0;
+                border-bottom: 2px solid #c5c7ca;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <input type="checkbox" id="nav-check">
+            <div class="nav-header">
+                <div class="nav-title">
+                    <img src="images/Crex_logo.png" alt="" width="30px" height="30px" style="margin: 10px 0;">
+                </div>
+            </div>
+            <div class="nav-btn">
+                <label for="nav-check">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+            
+            <div class="nav-links">
+              <a href="#home">Home</a>
+              <a href="#">Series</a>
+              <a href="#">Stats Corner</a>
+              <a href="#">Ranking</a>
+            </div>
+        </div>
+    </header>
+
+    <div style="background-color:#122638;width:100%;height:30vh;padding:20px 100px;">
+        <p id="bannerp"></p>
+        <span id="bannerp">5th March, 3rd T20I</span>
+        <div style="display:flex;justify-content:center;align-items:center;height:25vh;padding-bottom:45px;">
+            <div id="bannert"></div>
+            <i class="fa-solid fa-trophy" style="color:#d49f50;font-size:30px;font-weight:bold;margin-left:10px;"></i>
+        </div>
+    </div>
+    <hr style="color: #6f7172;">
+    <div style="background-color:#122638;color:#869099;width:100%;/*height:8vh;*/padding:0px 100px;display: flex;justify-content:flex-start;align-items:center;">
+        <div class="menu active">Match Info</div>
+        <div><a href="#scorecard" style="text-decoration: none;" class="menu menu1">Scorecard</a></div>  
+    </div>
+    <div style="background-color: #122638;width:100%;height:1px;"></div>
+    <!--<h6>Match Info API</h6>-->
+    <section>
+        <div class="leftdiv">
+
+            <div style="border-bottom:2px solid #c5c7ca; padding-bottom:20px;">
+                <h5 style="color:#869099;">5th March</h5>
+                <p style="font-size:20px;color:#5c5c5c;font-weight:700;">3rd T20I</p>
+            </div>
+            <div style="display: flex;align-items:center;padding:10px 0;">
+                <i class="fa-regular fa-calendar-days" style="color: #c5c7ca;font-size:20px;"></i>
+                <p style="font-size:15px;color:#5c5c5c;font-weight:700;padding-left:15px;">8th August, 2023, 14:30 PM</p>
+            </div>
+            <div style="display: flex;align-items:center;padding:10px 0;">
+                <i class="fa-solid fa-location-dot" style="color: #c5c7ca;font-size:20px;"></i>
+                <p style="font-size:15px;color:#5c5c5c;font-weight:700;padding-left:15px;" id="venue"></p>
+            </div>
+
+            <div style="border-top:2px solid #c5c7ca;padding:10px 0;">
+                <h5 style="font-size: 20px;">Team Form</h5>
+                <div style="display:flex;align-items:center;padding:10px 0;">
+                    <img src="https://images.entitysport.com/assets/uploads/2023/05/West-Indies.png" alt="WILogo" width="30px" height="30px">
+                    <p style="font-size:15px;color:#5c5c5c;font-weight:700;padding-left:15px;">West Indies</p>
+                </div>
+                <div style="display:flex;align-items:center;padding:10px 0;">
+                    <img src="https://images.entitysport.com/assets/uploads//2023/01/india-4.png" alt="WILogo" width="30px" height="30px">
+                    <p style="font-size:15px;color:#5c5c5c;font-weight:700;padding-left:15px;">India</p>
+                </div>
+            </div>
+
+        </div>
+        <div style="/*background-color:rgba(255, 0, 0, 0.359);*/color:#656566;padding:12px;border-bottom:2px solid #c5c7ca;">
+            <div><p id="wontossp" style="text-align:center;"></p></div>
+            <h4 style="font-size:20px;padding:10px 0;text-align:center;border-bottom:2px solid #c5c7ca;">Playing XI</h4>
+            <div class="namelogo">
+                <h6>WI</h6><img src="https://images.entitysport.com/assets/uploads/2023/05/West-Indies.png" alt="WILogo" width="25px" height="20px">
+            </div>
+            <table style="width: 100%;" class="players">
+                <tr>
+                    <td style="width: 100px;">
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                    <td style="width: 100px;">
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td> 
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                </tr>
+            </table>
+
+            <h6 style="font-size:20px;text-align:center;">On Bench</h6>
+            <table style="width: 100%;" class="players">
+                <tr>
+                    <td style="width:100px;">
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                    <td style="width:100px;">
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                    <td>
+                        <h6 class="teambp"></h6>
+                        <p class="rolebp"></p>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="namelogo">
+                <h6>IND</h6><img src="https://images.entitysport.com/assets/uploads//2023/01/india-4.png" alt="WILogo" width="20px" height="20px">
+            </div>
+            <!--<h6>IND</h6>-->
+            <table style="width: 100%;" class="players">
+                <tr>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                </tr>
+            </table>
+
+            <h6 style="font-size:20px;text-align:center;">On Bench</h6>
+            <table style="width: 100%;" class="players">
+                <tr>
+                    <td style="width: 100px;">
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                    <td style="width: 100px;">
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                    <td>
+                        <h6 class="teamap"></h6>
+                        <p class="rolep"></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <!--<div style="width:200px;height:200px;" id="scorecard">
+        <h2>Scorecard</h2>
+        <h3>Batting</h3>
+
+    </div>-->
+    <footer style="background-color:#122638;color:#869099;width:100%;padding:20px 100px;">
+        <div style="display: flex;align-items:center;">
+            <img src="images/Crex_logo.png" alt="Logo" width="30px" height="30px">
+            <div style="color:#93989d;font-size:25px;padding-left:10px;">CREX</div>
+        </div>
+        <!--<div style="color:#93989d;font-size: 25px;">CREX</div>-->
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;">
+            <div class="footer_menu">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Grievance</a></li>
+                <li><a href="#">Refund Policy</a></li>
+            </div>
+            <div class="footer_menu">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </div>
+        </div>
+    </footer>
+
+<script src="script1.js"></script>
+
+</body>
+</html>
